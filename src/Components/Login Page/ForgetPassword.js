@@ -10,7 +10,7 @@ function ForgetPassword() {
     const { resetPassEmailSetter } = useAuth();
     const history = useHistory();
     const sendEmail = async ()=>{
-        let res = await axios.patch("/api/v1/auth/forgetPassword",{email})
+        let res = await axios.patch("http://44.202.201.103/api/v1/auth/forgetPassword",{email})
         alert("mail send to your regsitered email");
         console.log(res);
         console.log(email);

@@ -19,7 +19,7 @@ function AuthProvider({ children }) {
         try {
             console.log("signup will be here");
             let res = await axios.post
-                ("/api/v1/auth/signup", {
+                ("http://44.202.201.103/api/v1/auth/signup", {
                     name: name,
                     password: password,
                     confirmPassword: confirm,
@@ -42,7 +42,7 @@ function AuthProvider({ children }) {
                 console.log("40", user1);
                 return;
             }
-            const res = await axios.post("/api/v1/auth/login", {
+            const res = await axios.post("http://44.202.201.103/api/v1/auth/login", {
                 email: email,
                 password: password
             });

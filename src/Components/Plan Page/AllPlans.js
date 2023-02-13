@@ -8,7 +8,7 @@ function AllPlans() {
     const [arr, arrset] = useState([]);
     useEffect(async () => {
         try {
-            const data = await axios.get("/api/v1/plan");
+            const data = await axios.get("http://44.202.201.103/api/v1/plan");
             console.log(data.data.AllPlans);
             arrset(data.data.AllPlans);
         } catch (err) {

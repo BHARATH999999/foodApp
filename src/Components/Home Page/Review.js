@@ -8,7 +8,7 @@ function Review() {
 
     useEffect(async () => {
         try {
-            const data = await axios.get("/api/top3reviews");
+            const data = await axios.get("http://44.202.201.103/api/top3reviews");
             setarr(data.data.reviews);
         } catch (err) {
             console.log(err);

@@ -17,7 +17,7 @@ function PasswordReset() {
         // no done -> email ,otp-> null
         console.log("button clicked");
         try {
-            let res = await axios.patch("/api/v1/auth/resetPassword", {
+            let res = await axios.patch("http://44.202.201.103/api/v1/auth/resetPassword", {
                 otp: otpPassEmail,
                 email: resetPassEmail,
                 password: password,

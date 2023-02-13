@@ -16,12 +16,12 @@ function PlanDetail() {
     useEffect(async () => {
         if (!user) return;
         console.log(user);
-        const data = await axios.get(`/api/v1/plan/${id}`)
+        const data = await axios.get(`http://44.202.201.103/api/v1/plan/${id}`)
         console.log(data.data.plan);
         delete data.data.plan["_id"]
         delete data.data.plan["__v"]
         setplan(data.data.plan)
-        const reviews = await axios.get("/api/v1/review/getReviewsOfPlan/" + id);
+        const reviews = await axios.get("http://44.202.201.103/api/v1/review/getReviewsOfPlan/" + id);
         if (reviews.data) setarr(reviews.data.reviews)
         console.log(reviews.data.reviews);
     }, [])
@@ -31,12 +31,12 @@ function PlanDetail() {
     }
     // console.log(rate);
     const handleClick = async () => {
-        if(!review){
+        if (!review) {
             console.log("review cannot be empty");
             return;
         }
         if (!user) return;
-        const data = await axios.post("/api/v1/review", {
+        const data = await axios.post("http://44.202.201.103/api/v1/review", {
             "description": review,
             "rating": rate,
             "user": user._id,
@@ -44,13 +44,13 @@ function PlanDetail() {
 
         })
         console.log(data.data);
-        const reviews = await axios.get("/api/v1/review/getReviewsOfPlan/" + id);
+        const reviews = await axios.get("http://44.202.201.103/api/v1/review/getReviewsOfPlan/" + id);
         console.log(reviews.data);
         setarr(reviews.data.reviews);
     }
-    async function handleDelete(id){
+    async function handleDelete(id) {
         try {
-            let data = await axios.get("/api/v1/review/deleteReview/" + id);
+            let data = await axios.get("http://44.202.201.103/api/v1/review/deleteReview/" + id);
             console.log(data.data);
         }
         catch (err) {
@@ -74,7 +74,7 @@ function PlanDetail() {
             <div className="planDetailBox">
                 <div className='planDetail'>
                     <div className="loginBox">
-                        {
+                        {user ?
                             Object.keys(plan).map((ele, key) => (
                                 <div className='entryBox' key={key}>
                                     {ele === "reviews" ?
@@ -91,6 +91,8 @@ function PlanDetail() {
                                     }
                                 </div>
                             ))
+                            :
+                            <div> Kindly Login First to acess full plan details.</div>
                         }
                     </div>
 

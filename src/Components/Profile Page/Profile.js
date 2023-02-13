@@ -15,7 +15,7 @@ function Profile() {
 
     const handleClick = async () => {
         try {
-            const data = await axios.patch("/api/v1/user",
+            const data = await axios.patch("http://44.202.201.103/api/v1/user",
                 {
                     _id: user?._id,
                     email,
@@ -44,7 +44,7 @@ function Profile() {
                 </div>
                 <div className="loginBox">
                     <div className="entryBox">
-                        <form action="/api/v1/user/profilepic" method="post" enctype="multipart/form-data">
+                        <form action="http://44.202.201.103/api/v1/user/profilepic" method="post" enctype="multipart/form-data">
                             <input type="file" name="avatar" />
                         </form>
                     </div>
